@@ -339,7 +339,7 @@
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls>-fexceptions</MiscControls>
-              <Define>USE_HAL_DRIVER,STM32F746xx</Define>
+              <Define>USE_HAL_DRIVER,STM32F746xx,CPPUTEST_STD_CPP_LIB_DISABLED</Define>
               <Undefine></Undefine>
               <IncludePath>../Inc;../Drivers/STM32F7xx_HAL_Driver/Inc;../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F7xx/Include;..\..\cpputest\include;..\..\cpputest\include\CppUTest;..\..\cpputest\include\CppUTestExt</IncludePath>
             </VariousControls>
