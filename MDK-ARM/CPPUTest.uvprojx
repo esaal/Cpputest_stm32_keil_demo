@@ -341,7 +341,7 @@
               <MiscControls>-fexceptions</MiscControls>
               <Define>USE_HAL_DRIVER,STM32F746xx</Define>
               <Undefine></Undefine>
-              <IncludePath>../Inc;../Drivers/STM32F7xx_HAL_Driver/Inc;../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F7xx/Include;../Drivers/CMSIS/Include;..\Middlewares\Third_Party\CPPUTEST\include;..\Middlewares\Third_Party\CPPUTEST\include\CppUTest;..\Middlewares\Third_Party\CPPUTEST\include\CppUTestExt</IncludePath>
+              <IncludePath>../Inc;../Drivers/STM32F7xx_HAL_Driver/Inc;../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F7xx/Include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
