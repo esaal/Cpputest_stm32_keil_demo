@@ -519,6 +519,108 @@
         </Group>
         <Group>
           <GroupName>CPPUTEST Lib.</GroupName>
+          <Files>
+            <File>
+              <FileName>UtestPlatform.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\..\cpputest\src\Platforms\Keil\UtestPlatform.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>CommandLineArguments.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\..\cpputest\src\CppUTest\CommandLineArguments.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>CommandLineTestRunner.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\..\cpputest\src\CppUTest\CommandLineTestRunner.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>JUnitTestOutput.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\..\cpputest\src\CppUTest\JUnitTestOutput.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>MemoryLeakDetector.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\..\cpputest\src\CppUTest\MemoryLeakDetector.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>MemoryLeakWarningPlugin.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\..\cpputest\src\CppUTest\MemoryLeakWarningPlugin.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>SimpleMutex.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\..\cpputest\src\CppUTest\SimpleMutex.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>SimpleString.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\..\cpputest\src\CppUTest\SimpleString.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>SimpleStringInternalCache.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\..\cpputest\src\CppUTest\SimpleStringInternalCache.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>TeamCityTestOutput.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\..\cpputest\src\CppUTest\TeamCityTestOutput.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>TestFailure.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\..\cpputest\src\CppUTest\TestFailure.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>TestFilter.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\..\cpputest\src\CppUTest\TestFilter.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>TestHarness_c.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\..\cpputest\src\CppUTest\TestHarness_c.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>TestMemoryAllocator.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\..\cpputest\src\CppUTest\TestMemoryAllocator.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>TestOutput.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\..\cpputest\src\CppUTest\TestOutput.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>TestPlugin.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\..\cpputest\src\CppUTest\TestPlugin.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>TestRegistry.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\..\cpputest\src\CppUTest\TestRegistry.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>TestResult.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\..\cpputest\src\CppUTest\TestResult.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>TestTestingFixture.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\..\cpputest\src\CppUTest\TestTestingFixture.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Utest.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\..\cpputest\src\CppUTest\Utest.cpp</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>::CMSIS</GroupName>
@@ -539,5 +641,14 @@
     </components>
     <files/>
   </RTE>
+
+  <LayerInfo>
+    <Layers>
+      <Layer>
+        <LayName>CPPUTest</LayName>
+        <LayPrjMark>1</LayPrjMark>
+      </Layer>
+    </Layers>
+  </LayerInfo>
 
 </Project>
