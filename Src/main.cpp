@@ -79,8 +79,9 @@ int main(int ac, char** av)
   /* MCU Configuration----------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
+  #if 0 // This is for F7 
   HAL_Init();
-
+  #endif
   /* USER CODE BEGIN Init */
 
   /* USER CODE END Init */
@@ -93,7 +94,9 @@ int main(int ac, char** av)
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
+  #if 0 // This is for F7 
   MX_GPIO_Init();
+  #endif
   /* USER CODE BEGIN 2 */
 
 		//turn on verbose mode
