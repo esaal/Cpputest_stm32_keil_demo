@@ -126,7 +126,89 @@ int main(int ac, char** av)
   */
 void SystemClock_Config(void)
 {
-#if 0
+
+  /* AXI clock gating */
+  RCC->CKGAENR = 0xFFFFFFFF;
+
+  /* Configure FLASH Latency*/
+  LL_FLASH_SetLatency(LL_FLASH_LATENCY_6);
+    
+  /* Wait till FLASH Latency ready */
+  while(LL_FLASH_GetLatency()!= LL_FLASH_LATENCY_6)
+  {
+  }
+  
+  /* Configure the main internal Regulator output voltage */
+  LL_PWR_ConfigSupply(LL_PWR_DIRECT_SMPS_SUPPLY);
+  LL_PWR_SetRegulVoltageScaling(LL_PWR_REGU_VOLTAGE_SCALE0);
+  /* Wait till the Regulator is ready */
+  while (LL_PWR_IsActiveFlag_VOS() == 0)
+  {
+  }
+
+  /* Enable HSI oscillator */
+  LL_RCC_HSI_Enable();
+
+   /* Wait till HSI is ready */
+  while(LL_RCC_HSI_IsReady() != 1)
+  {
+
+  }
+
+  LL_RCC_HSI_SetCalibTrimming(64);              /*  */
+  LL_RCC_HSI_SetDivider(LL_RCC_HSI_DIV1);       /*  */
+  LL_RCC_PLL_SetSource(LL_RCC_PLLSOURCE_HSI);   /* HSI source clock selected ((uint32_t)0x00000000) */
+  LL_RCC_PLL1P_Enable();
+  LL_RCC_PLL1Q_Enable();
+  LL_RCC_PLL1_SetVCOInputRange(LL_RCC_PLLINPUTRANGE_8_16);
+  LL_RCC_PLL1_SetVCOOutputRange(LL_RCC_PLLVCORANGE_WIDE);
+  LL_RCC_PLL1_SetM(4);
+  LL_RCC_PLL1_SetN(35);
+  LL_RCC_PLL1_SetP(2);
+  LL_RCC_PLL1_SetQ(4);
+  LL_RCC_PLL1_SetR(2);
+  LL_RCC_PLL1_Enable();
+
+   /* Wait till PLL is ready */
+  while(LL_RCC_PLL1_IsReady() != 1)
+  {
+  }
+
+   /* Intermediate AHB prescaler 2 when target frequency clock is higher than 80 MHz */
+  LL_RCC_SetAHBPrescaler(LL_RCC_AHB_DIV_2);
+
+  LL_RCC_SetSysClkSource(LL_RCC_SYS_CLKSOURCE_PLL1);
+
+   /* Wait till System clock is ready */
+  while(LL_RCC_GetSysClkSource() != LL_RCC_SYS_CLKSOURCE_STATUS_PLL1)
+  {
+  }
+
+  LL_RCC_SetAHBPrescaler(LL_RCC_AHB_DIV_1);
+  LL_RCC_SetAPB1Prescaler(LL_RCC_APB1_DIV_2);
+  LL_RCC_SetAPB2Prescaler(LL_RCC_APB2_DIV_2);
+  LL_RCC_SetAPB3Prescaler(LL_RCC_APB3_DIV_2);
+  LL_RCC_SetAPB4Prescaler(LL_RCC_APB4_DIV_2);
+
+  LL_Init1msTick(280000000);
+  //LL_SetSystemCoreClock(280000000);
+
+  /* Set systick to 1ms */
+  /* SysTick_IRQn interrupt priority */
+  SysTick_Config(280000000 / 1000);
+
+  SystemCoreClock = 280000000;
+
+
+  #if 0
+   /* Update the time base */
+  if (HAL_InitTick (TICK_INT_PRIORITY) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  #endif
+
+  #if 0 // This is for F7
   RCC_OscInitTypeDef RCC_OscInitStruct;
   RCC_ClkInitTypeDef RCC_ClkInitStruct;
 
@@ -183,7 +265,7 @@ void SystemClock_Config(void)
 
   /* SysTick_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
-#endif
+  #endif
 }
 
 /* USER CODE BEGIN 4 */
