@@ -38,8 +38,8 @@
   */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "stm32h7xx_hal.h"
-#include "gpio.h"
+//#include "stm32h7xx_hal.h"
+//#include "gpio.h"
 
 /* USER CODE BEGIN Includes */
 #include "CommandLineTestRunner.h"
@@ -61,7 +61,7 @@ void SystemClock_Config(void);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
-#include "stdio.h"
+#include "stdhdr.h"
 /* USER CODE END 0 */
 
 

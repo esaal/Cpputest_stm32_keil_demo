@@ -393,6 +393,21 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>Drivers/STM32H7xx_LL_Driver</GroupName>
+          <Files>
+            <File>
+              <FileName>stm32h7xx_ll_rcc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_ll_rcc.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32h7xx_ll_utils.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_ll_utils.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>Drivers/STM32H7xx_HAL_Driver</GroupName>
           <Files>
             <File>
@@ -960,7 +975,7 @@
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls>-fexceptions</MiscControls>
-              <Define>USE_HAL_DRIVER,STM32H7A3xxQ</Define>
+              <Define>USE_FULL_LL_DRIVER,STM32H7A3xxQ</Define>
               <Undefine></Undefine>
               <IncludePath>../Inc;..\Drivers\STM32H7xx_HAL_Driver\Inc;..\Drivers\STM32H7xx_HAL_Driver\Inc\Legacy;..\Drivers\CMSIS\Device\ST\STM32H7xx\Include;..\..\cpputest\include;..\..\cpputest\include\CppUTest;..\..\cpputest\include\CppUTestExt</IncludePath>
             </VariousControls>
@@ -1010,6 +1025,21 @@
               <FileName>startup_stm32h7a3xxq.s</FileName>
               <FileType>2</FileType>
               <FilePath>.\startup_stm32h7a3xxq.s</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Drivers/STM32H7xx_LL_Driver</GroupName>
+          <Files>
+            <File>
+              <FileName>stm32h7xx_ll_rcc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_ll_rcc.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32h7xx_ll_utils.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_ll_utils.c</FilePath>
             </File>
           </Files>
         </Group>
