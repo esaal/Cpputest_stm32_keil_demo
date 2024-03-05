@@ -14,7 +14,7 @@
 /*
  * Define the Device Header File: 
  */
-#define CMSIS_device_header "stm32f7xx.h"
+#define CMSIS_device_header "stm32h7xx.h"
 
 
 

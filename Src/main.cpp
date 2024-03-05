@@ -38,7 +38,7 @@
   */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "stm32f7xx_hal.h"
+#include "stm32h7xx_hal.h"
 #include "gpio.h"
 
 /* USER CODE BEGIN Includes */
@@ -123,7 +123,7 @@ int main(int ac, char** av)
   */
 void SystemClock_Config(void)
 {
-
+#if 0
   RCC_OscInitTypeDef RCC_OscInitStruct;
   RCC_ClkInitTypeDef RCC_ClkInitStruct;
 
@@ -180,6 +180,7 @@ void SystemClock_Config(void)
 
   /* SysTick_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
+#endif
 }
 
 /* USER CODE BEGIN 4 */
