@@ -476,9 +476,9 @@
           <GroupName>Drivers/CMSIS</GroupName>
           <Files>
             <File>
-              <FileName>system_stm32f7xx.c</FileName>
+              <FileName>system_stm32h7xx.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..//Src/system_stm32f7xx.c</FilePath>
+              <FilePath>..\Src\system_stm32h7xx.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1097,9 +1097,9 @@
           <GroupName>Drivers/CMSIS</GroupName>
           <Files>
             <File>
-              <FileName>system_stm32f7xx.c</FileName>
+              <FileName>system_stm32h7xx.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..//Src/system_stm32f7xx.c</FilePath>
+              <FilePath>..\Src\system_stm32h7xx.c</FilePath>
             </File>
           </Files>
         </Group>
