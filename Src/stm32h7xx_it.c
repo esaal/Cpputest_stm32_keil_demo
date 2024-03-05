@@ -5,11 +5,7 @@
 */
 
 /* Includes ------------------------------------------------------------------*/
-#include "stdhdr.h"
 #include "stm32h7xx_it.h"
-#include "DEVICE_SYSTEM.h"
-#include "FACILITY_SYSTEM.h"
-
 
 
 /**
@@ -77,7 +73,6 @@ void DebugMon_Handler( void )
   */
 void USART2_IRQHandler( void )
 {
-	SERIAL_IRQHandler(hxGetSerial2());
 }
 
 
@@ -87,10 +82,6 @@ void USART2_IRQHandler( void )
   */
 void USART3_IRQHandler( void )
 {
-	if(LL_USART_IsActiveFlag_RXNE(hxGetSerial3()->USARTx) && LL_USART_IsEnabledIT_RXNE(hxGetSerial3()->USARTx))
-	{
-		//CMDPROC_Consume(LL_USART_ReceiveData8(hxGetSerial3()->USARTx));
-	}
 }
 
 
@@ -100,18 +91,11 @@ void USART3_IRQHandler( void )
   */
 void UART4_IRQHandler( void )
 {
-	SERIAL_IRQHandler(hxGetSerial4());
 }
 
 
 void EXTI15_10_IRQHandler( void )
 {
-	
-	if(LL_EXTI_IsActiveFlag_0_31(hxGetUserBtn()->exti.line) != RESET)
-	{
-		LL_EXTI_ClearFlag_0_31(hxGetUserBtn()->exti.line);
-		TRILED_Yellow(-1);		
-	}
 }
 
 
@@ -122,16 +106,6 @@ void EXTI15_10_IRQHandler( void )
 */
 void DMA2_Stream0_IRQHandler( void )
 {
-	if(LL_DMA_IsActiveFlag_TC0(DMA2))
-	{
-		LL_DMA_ClearFlag_TC0(DMA2);
-		//TransferComplete();
-	}
-	else if(LL_DMA_IsActiveFlag_TE0(DMA2))
-	{
-		LL_DMA_ClearFlag_TE0(DMA2);
-		//TransferError();
-	}
 }
 
 
