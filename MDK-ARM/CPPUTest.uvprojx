@@ -386,9 +386,9 @@
           <GroupName>Application/MDK-ARM</GroupName>
           <Files>
             <File>
-              <FileName>startup_stm32f746xx.s</FileName>
+              <FileName>startup_stm32h7a3xxq.s</FileName>
               <FileType>2</FileType>
-              <FilePath>startup_stm32f746xx.s</FilePath>
+              <FilePath>.\startup_stm32h7a3xxq.s</FilePath>
             </File>
           </Files>
         </Group>
@@ -1007,9 +1007,9 @@
           <GroupName>Application/MDK-ARM</GroupName>
           <Files>
             <File>
-              <FileName>startup_stm32f746xx.s</FileName>
+              <FileName>startup_stm32h7a3xxq.s</FileName>
               <FileType>2</FileType>
-              <FilePath>startup_stm32f746xx.s</FilePath>
+              <FilePath>.\startup_stm32h7a3xxq.s</FilePath>
             </File>
           </Files>
         </Group>
