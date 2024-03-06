@@ -1,8 +1,8 @@
-
 /**
   ******************************************************************************
-  * @file           : main.c
-  * @brief          : Main program body
+  * @file           : mainH7.h
+  * @brief          : Header for mainH7.c file.
+  *                   This file contains the common defines of the application.
   ******************************************************************************
   ** This notice applies to any and all portions of this file
   * that are not between comment pairs USER CODE BEGIN and
@@ -36,67 +36,13 @@
   *
   ******************************************************************************
   */
-/* Includes ------------------------------------------------------------------*/
-#include "main.h"
-#if defined(STM32H7A3xxQ)
-#include "mainH7.h"
-#else
-#include "mainF7.h"
-#endif
 
-/**
-  * @brief  The application entry point.
-  *
-  * @retval None
-  */
-int main(int ac, char** av)
-{
-#if defined(STM32H7A3xxQ)
-  mainH7();
-#else
-  mainF7();
-#endif
-}
+/* Define to prevent recursive inclusion -------------------------------------*/
+#ifndef __MAINH7_H__
+#define __MAINH7_H__
 
-/**
-  * @brief  This function is executed in case of error occurrence.
-  * @param  file: The file name as string.
-  * @param  line: The line in file as a number.
-  * @retval None
-  */
-void _Error_Handler(char *file, int line)
-{
-  /* USER CODE BEGIN Error_Handler_Debug */
-  /* User can add his own implementation to report the HAL error return state */
-  while(1)
-  {
-  }
-  /* USER CODE END Error_Handler_Debug */
-}
+void mainH7(void);
 
-#ifdef  USE_FULL_ASSERT
-/**
-  * @brief  Reports the name of the source file and the source line number
-  *         where the assert_param error has occurred.
-  * @param  file: pointer to the source file name
-  * @param  line: assert_param error line source number
-  * @retval None
-  */
-void assert_failed(uint8_t* file, uint32_t line)
-{ 
-  /* USER CODE BEGIN 6 */
-  /* User can add his own implementation to report the file name and line number,
-     tex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
-  /* USER CODE END 6 */
-}
-#endif /* USE_FULL_ASSERT */
-
-/**
-  * @}
-  */
-
-/**
-  * @}
-  */
+#endif /* __MAIN_H__ */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
