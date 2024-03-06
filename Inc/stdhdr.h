@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <stdint.h>
 
+#if defined(STM32H7A3xxQ)
 #include "stm32h7xx_ll_bus.h"
 #include "stm32h7xx_ll_system.h"
 #include "stm32h7xx_ll_gpio.h"
@@ -16,5 +17,6 @@
 #include "stm32h7xx_ll_pwr.h"
 #include "stm32h7xx_ll_utils.h"
 #include "stm32h7xx_ll_tim.h"
+#endif
 
 #endif

@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stm32h7xx.h>
+#include <stm32f7xx.h>
 
 int fputc(int c, FILE *stream)
 {

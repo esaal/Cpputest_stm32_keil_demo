@@ -38,8 +38,12 @@
   */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-//#include "stm32h7xx_hal.h"
-//#include "gpio.h"
+#if defined(STM32H7A3xxQ)
+#include "stm32h7xx_hal.h"
+#else
+#include "stm32f7xx_hal.h"
+#include "gpio.h"
+#endif
 
 /* USER CODE BEGIN Includes */
 #include "CommandLineTestRunner.h"
@@ -79,30 +83,31 @@ int main(int ac, char** av)
   /* MCU Configuration----------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  #if 0 // This is for F7 
+#if defined(STM32F746xx)
   HAL_Init();
-  #endif
+#endif
+
   /* USER CODE BEGIN Init */
 
   /* USER CODE END Init */
 
   /* Configure the system clock */
-  SystemClock_Config();
+  //SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
 
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
-  #if 0 // This is for F7 
+#if defined(STM32F746xx)
   MX_GPIO_Init();
-  #endif
+#endif
   /* USER CODE BEGIN 2 */
 
-		//turn on verbose mode
-		const char * av_override[] = { "exe", "-v" };
+  //turn on verbose mode
+  const char * av_override[] = { "exe", "-v" };
 		
-    CommandLineTestRunner::RunAllTests(2, av_override);
+  CommandLineTestRunner::RunAllTests(2, av_override);
 		
   /* USER CODE END 2 */
 
@@ -126,7 +131,7 @@ int main(int ac, char** av)
   */
 void SystemClock_Config(void)
 {
-
+#if defined(STM32H7A3xxQ)
   /* AXI clock gating */
   RCC->CKGAENR = 0xFFFFFFFF;
 
@@ -139,24 +144,39 @@ void SystemClock_Config(void)
   }
   
   /* Configure the main internal Regulator output voltage */
-  LL_PWR_ConfigSupply(LL_PWR_DIRECT_SMPS_SUPPLY);
-  LL_PWR_SetRegulVoltageScaling(LL_PWR_REGU_VOLTAGE_SCALE0);
+  //LL_PWR_ConfigSupply(LL_PWR_DIRECT_SMPS_SUPPLY);               // PWR->CR3 SMPS Enable
+  MODIFY_REG(PWR->CR3, (PWR_CR3_SMPSLEVEL | PWR_CR3_SMPSEXTHP | PWR_CR3_SMPSEN | PWR_CR3_LDOEN | PWR_CR3_BYPASS), LL_PWR_DIRECT_SMPS_SUPPLY);
+  //LL_PWR_SetRegulVoltageScaling(LL_PWR_REGU_VOLTAGE_SCALE0);    // Regulator Voltage Scaling (PWR_D3CR_VOS_0 | PWR_D3CR_VOS_1)
+  MODIFY_REG(PWR->SRDCR, PWR_SRDCR_VOS, LL_PWR_REGU_VOLTAGE_SCALE0);
   /* Wait till the Regulator is ready */
-  while (LL_PWR_IsActiveFlag_VOS() == 0)
+  //while (LL_PWR_IsActiveFlag_VOS() == 0)
   {
+    __IO uint32_t tmpreg = 0x00;  
+    do
+    {
+      tmpreg = ((READ_BIT(PWR->SRDCR, PWR_SRDCR_VOS) == (PWR_SRDCR_VOS)) ? 1UL : 0UL);
+    }while (tmpreg == 0);
   }
 
   /* Enable HSI oscillator */
   LL_RCC_HSI_Enable();
+  LL_RCC_HSI_SetDivider(LL_RCC_HSI_DIV1);       /* RCC_HSI_DIV1 turn ON the HSI oscillator and divide it by 1 (default after reset) */
+  LL_RCC_HSI_SetCalibTrimming(64);              /* Adjusts the Internal High Speed oscillator (HSI) calibration value */  
 
-   /* Wait till HSI is ready */
-  while(LL_RCC_HSI_IsReady() != 1)
+  /* Wait till HSI is ready */
+  //while(LL_RCC_HSI_IsReady() != 1)
   {
-
+    /* Get Start Tick*/
+    //uint32_t tickstart;
+    //tickstart = ticks;
+      
+    __IO uint32_t tmpreg = 0x00;  
+    do
+    {
+      tmpreg = ((READ_BIT(RCC->CR, RCC_CR_HSIRDY) == (RCC_CR_HSIRDY)) ? 1UL : 0UL);
+    }while (tmpreg == 0);
   }
 
-  LL_RCC_HSI_SetCalibTrimming(64);              /*  */
-  LL_RCC_HSI_SetDivider(LL_RCC_HSI_DIV1);       /*  */
   LL_RCC_PLL_SetSource(LL_RCC_PLLSOURCE_HSI);   /* HSI source clock selected ((uint32_t)0x00000000) */
   LL_RCC_PLL1P_Enable();
   LL_RCC_PLL1Q_Enable();
@@ -170,7 +190,7 @@ void SystemClock_Config(void)
   LL_RCC_PLL1_Enable();
 
    /* Wait till PLL is ready */
-  while(LL_RCC_PLL1_IsReady() != 1)
+  //while(LL_RCC_PLL1_IsReady() != 1)
   {
   }
 
@@ -180,7 +200,7 @@ void SystemClock_Config(void)
   LL_RCC_SetSysClkSource(LL_RCC_SYS_CLKSOURCE_PLL1);
 
    /* Wait till System clock is ready */
-  while(LL_RCC_GetSysClkSource() != LL_RCC_SYS_CLKSOURCE_STATUS_PLL1)
+  //while(LL_RCC_GetSysClkSource() != LL_RCC_SYS_CLKSOURCE_STATUS_PLL1)
   {
   }
 
@@ -199,7 +219,6 @@ void SystemClock_Config(void)
 
   SystemCoreClock = 280000000;
 
-
   #if 0
    /* Update the time base */
   if (HAL_InitTick (TICK_INT_PRIORITY) != HAL_OK)
@@ -207,8 +226,7 @@ void SystemClock_Config(void)
     Error_Handler();
   }
   #endif
-
-  #if 0 // This is for F7
+  #else
   RCC_OscInitTypeDef RCC_OscInitStruct;
   RCC_ClkInitTypeDef RCC_ClkInitStruct;
 
